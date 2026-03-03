@@ -1,6 +1,10 @@
-import { Skeleton } from '@/components/ui/skeleton';
+import React from 'react';
 
-const LoadingSkeleton = () => {
+const Skeleton = ({ className = '' }) => (
+  <div className={`bg-slate-700/50 animate-pulse rounded ${className}`} />
+);
+
+export const LoadingSkeleton = () => {
   return (
     <div className="space-y-12">
       {[1, 2].map((section) => (
@@ -44,5 +48,3 @@ const LoadingSkeleton = () => {
     </div>
   );
 };
-
-export default LoadingSkeleton;

@@ -1,9 +1,9 @@
+import React from 'react';
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react';
 import { MiniChart } from './MiniChart';
 
-const StockCard = ({ stock, patternType }) => {
+export const StockCard = ({ stock, patternType }) => {
   const isPositive = stock.change >= 0;
-  const patternColor = patternType === 'hammer' ? 'emerald' : 'blue';
 
   const formatVolume = (volume) => {
     if (volume >= 10000000) return `${(volume / 10000000).toFixed(2)}Cr`;
@@ -40,9 +40,7 @@ const StockCard = ({ stock, patternType }) => {
                 {patternType === 'hammer' ? 'Hammer' : 'Inv. Hammer'}
               </span>
             </div>
-            <p className="text-sm text-slate-400 line-clamp-1">
-              {stock.name}
-            </p>
+            <p className="text-sm text-slate-400 line-clamp-1">{stock.name}</p>
           </div>
         </div>
 
@@ -86,5 +84,3 @@ const StockCard = ({ stock, patternType }) => {
     </div>
   );
 };
-
-export default StockCard;

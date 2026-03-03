@@ -1,4 +1,6 @@
-const MiniChart = ({ change }) => {
+import React from 'react';
+
+export const MiniChart = ({ change }) => {
   const isPositive = change >= 0;
 
   return (
@@ -23,5 +25,3 @@ const MiniChart = ({ change }) => {
     </div>
   );
 };
-
-export default MiniChart;

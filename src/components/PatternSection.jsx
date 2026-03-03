@@ -1,14 +1,8 @@
+import React from 'react';
 import { StockCard } from './StockCard';
 import { Package } from 'lucide-react';
 
-const PatternSection = ({
-  title,
-  stocks,
-  patternType,
-  icon,
-}) => {
-  const accentColor = patternType === 'hammer' ? 'emerald' : 'blue';
-
+export const PatternSection = ({ title, stocks, patternType, icon }) => {
   if (stocks.length === 0) {
     return (
       <div className="space-y-4">
@@ -40,9 +34,7 @@ const PatternSection = ({
             <p className="text-sm text-slate-400">
               <span
                 className={`font-semibold ${
-                  patternType === 'hammer'
-                    ? 'text-emerald-400'
-                    : 'text-blue-400'
+                  patternType === 'hammer' ? 'text-emerald-400' : 'text-blue-400'
                 }`}
               >
                 {stocks.length}
@@ -70,5 +62,3 @@ const PatternSection = ({
     </div>
   );
 };
-
-export default PatternSection;
