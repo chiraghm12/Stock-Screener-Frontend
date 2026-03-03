@@ -2,8 +2,9 @@ import React from 'react';
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react';
 import { MiniChart } from './MiniChart';
 
-export const StockCard = ({ stock, patternType }) => {
+export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) => {
   const isPositive = stock.change >= 0;
+
 
   const formatVolume = (volume) => {
     if (volume >= 10000000) return `${(volume / 10000000).toFixed(2)}Cr`;
@@ -16,11 +17,10 @@ export const StockCard = ({ stock, patternType }) => {
       className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-xl p-5 border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-1 cursor-pointer overflow-hidden"
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${
-          patternType === 'hammer'
+        className={`absolute inset-0 bg-gradient-to-br ${patternType === 'hammer'
             ? 'from-emerald-500/5 to-transparent'
             : 'from-blue-500/5 to-transparent'
-        } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+          } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
       />
 
       <div className="relative z-10">
@@ -31,14 +31,23 @@ export const StockCard = ({ stock, patternType }) => {
                 {stock.symbol}
               </h3>
               <span
-                className={`px-2 py-0.5 text-xs font-semibold rounded-full ${
-                  patternType === 'hammer'
+                className={`px-2 py-0.5 text-xs font-semibold rounded-full ${patternType === 'hammer'
                     ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                     : 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                }`}
+                  }`}
               >
                 {patternType === 'hammer' ? 'Hammer' : 'Inv. Hammer'}
               </span>
+              {linkUrl && LinkIcon && (
+                <a
+                  href={linkUrl}
+                  target="_blank" rel="noopener noreferrer"
+                  className="ml-2 text-slate-400 hover:text-slate-200"
+                  onClick={(e) => e.stopPropagation()} // prevent card click if any
+                >
+                  <LinkIcon className="w-4 h-4" />
+                </a>
+              )}
             </div>
             <p className="text-sm text-slate-400 line-clamp-1">{stock.name}</p>
           </div>
@@ -52,9 +61,8 @@ export const StockCard = ({ stock, patternType }) => {
               <TrendingDown className="w-5 h-5 text-rose-400" />
             )}
             <span
-              className={`text-xl font-bold ${
-                isPositive ? 'text-emerald-400' : 'text-rose-400'
-              }`}
+              className={`text-xl font-bold ${isPositive ? 'text-emerald-400' : 'text-rose-400'
+                }`}
             >
               {isPositive ? '+' : ''}
               {stock.change.toFixed(2)}%
