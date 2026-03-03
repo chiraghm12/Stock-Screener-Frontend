@@ -1,7 +1,7 @@
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react';
 import { MiniChart } from './MiniChart';
 
-export const StockCard = ({ stock, patternType }) => {
+const StockCard = ({ stock, patternType }) => {
   const isPositive = stock.change >= 0;
   const patternColor = patternType === 'hammer' ? 'emerald' : 'blue';
 
@@ -86,3 +86,5 @@ export const StockCard = ({ stock, patternType }) => {
     </div>
   );
 };
+
+export default StockCard;

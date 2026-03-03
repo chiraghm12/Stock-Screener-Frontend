@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton';
 
-export const LoadingSkeleton = () => {
+const LoadingSkeleton = () => {
   return (
     <div className="space-y-12">
       {[1, 2].map((section) => (
@@ -44,3 +44,5 @@ export const LoadingSkeleton = () => {
     </div>
   );
 };
+
+export default LoadingSkeleton;

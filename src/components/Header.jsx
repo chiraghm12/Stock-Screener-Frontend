@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { RefreshCw, Calendar, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import 
 
-export const Header = ({ date, onRefresh, isLoading }) => {
+const Header = ({ date, onRefresh, isLoading }) => {
     const timeframes = ['5m', '15m', '1H', '4H', '1D', '1W'];
     const [selectedTimeframe, setSelectedTimeframe] = useState('1D');
 
@@ -70,3 +71,5 @@ export const Header = ({ date, onRefresh, isLoading }) => {
         </div>
     );
 };
+
+export default Header;

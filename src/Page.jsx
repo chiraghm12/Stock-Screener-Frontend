@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Header } from '@/components/Header';
-import { PatternSection } from '@/components/PatternSection';
-import { LoadingSkeleton } from '@/components/LoadingSkeleton';
-import { mockData } from '@/data/mockData';
+import Header from './components/Header';
+import PatternSection from './components/PatternSection';
+import LoadingSkeleton from './components/LoadingSkeleton';
+import mockData from './mockData';
 import { Hammer, FlipVertical2 } from 'lucide-react';
 
-export default function Home() {
+const Home = () =>{
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -81,3 +81,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

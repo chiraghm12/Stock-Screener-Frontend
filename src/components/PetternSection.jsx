@@ -1,7 +1,7 @@
 import { StockCard } from './StockCard';
 import { Package } from 'lucide-react';
 
-export const PatternSection = ({
+const PatternSection = ({
   title,
   stocks,
   patternType,
@@ -70,3 +70,5 @@ export const PatternSection = ({
     </div>
   );
 };
+
+export default PatternSection;

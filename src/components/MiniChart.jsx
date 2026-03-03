@@ -1,4 +1,4 @@
-export const MiniChart = ({ change }) => {
+const MiniChart = ({ change }) => {
   const isPositive = change >= 0;
 
   return (
@@ -23,3 +23,5 @@ export const MiniChart = ({ change }) => {
     </div>
   );
 };
+
+export default MiniChart;
