@@ -13,7 +13,7 @@ import SidebarWidget from "./SidebarWidget";
 
 const navItems = [
   {
-    icon: <MdCandlestickChart className="inline-block w-4 h-4" />,
+    icon: <MdCandlestickChart className="inline-block w-5 h-5" />,
     name: "Candlestick Patterns",
     subItems: [
       { name: "Hammer", path: "/hammer", pro: false },

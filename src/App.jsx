@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { Header } from './components/Header';
-import { PatternSection } from './components/PatternSection';
-import { LoadingSkeleton } from './components/LoadingSkeleton';
-import { mockData } from './data/mockData';
-// import { Hammer, FlipVertical2 } from 'lucide-react';
 import Hammer from './pages/Candlestick/Hammer';
+import InvertedHammer from './pages/Candlestick/InvertedHammer';
+import Delivery from './pages/Delivery/Delivery';
 import AppLayout from './layout/AppLayout';
 
 // const App = () => {
@@ -90,10 +87,11 @@ function App() {
     <Router>
       <Routes>
         <Route element={<AppLayout />}>
-          {/* Define your routes here */}
           <Route path="/" element={<Navigate to="/candlestick-patterns" replace />} />
-          <Route path="/candlestick-patterns" element={<Hammer />} />
-          {/* Add more routes as needed */}
+          <Route path="/candlestick-patterns" element={<Navigate to="/hammer" replace />} />
+          <Route path="/hammer" element={<Hammer />} />
+          <Route path="/inverted-hammer" element={<InvertedHammer />} />
+          <Route path="/delivery" element={<Delivery />} />
         </Route>
       </Routes>
     </Router>

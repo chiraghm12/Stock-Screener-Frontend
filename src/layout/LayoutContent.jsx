@@ -20,7 +20,7 @@ const LayoutContent = () => {
       >
         <AppHeader />
         {/* Add bg-white and dark:bg-gray-900 to ensure dashboard area changes with theme */}
-        <div className="p-4 max-w-full md:p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+        <div className="max-w-full min-h-screen">
           <Outlet />
         </div>
       </div>
