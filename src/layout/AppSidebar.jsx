@@ -5,11 +5,11 @@ import {
   HiDotsHorizontal,
   MdCandlestickChart,
   IoCube,
-  FaChevronDown,
+  FaAngleDown,
 } from "../icons";
 
 import { useSidebar } from "../context/SidebarContext";
-// import SidebarWidget from "./SidebarWidget";
+import SidebarWidget from "./SidebarWidget";
 
 const navItems = [
   {
@@ -119,7 +119,7 @@ const AppSidebar = () => {
                 <span className="menu-item-text">{nav.name}</span>
               )}
               {(isExpanded || isHovered || isMobileOpen) && (
-                <FaChevronDown
+                <FaAngleDown
                   className={`ml-auto w-5 h-5 transition-transform duration-200 ${
                     openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
@@ -214,7 +214,7 @@ const AppSidebar = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-slate-950 dark:border-gray-800 text-gray-300 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-slate-950 text-gray-100 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-800
         ${
           isExpanded || isMobileOpen
             ? "w-[290px]"
@@ -236,20 +236,12 @@ const AppSidebar = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <img
-                className="dark:hidden"
                 src="/src/assets/Candlestick-Scanner-Logo-White.svg"
                 alt="Logo"
                 width={40}
                 height={40}
               />
-              <img
-                className="hidden dark:block"
-                src="/src/assets/Candlestick-Scanner-Logo-White.svg"
-                alt="Logo"
-                width={40}
-                height={40}
-              />
-              <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">
+              <span className="ml-2 text-xl font-bold text-white">
                 Stock Screener
               </span>
             </>
@@ -263,7 +255,7 @@ const AppSidebar = () => {
           )}
         </Link>
       </div>
-      <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
+      <div className="flex-1 flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         <nav className="mb-6">
           <div className="flex flex-col gap-4">
             <div>
@@ -300,8 +292,8 @@ const AppSidebar = () => {
             </div>
           </div>
         </nav>
-        {/* {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null} */}
       </div>
+      {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
     </aside>
   );
 };

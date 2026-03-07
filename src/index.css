@@ -79,5 +79,67 @@
   body {
     background-color: rgb(var(--background));
     color: rgb(var(--foreground));
+    font-family: 'Outfit', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Menu Item Styles */
+  .menu-item {
+    @apply flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-all duration-200;
+  }
+
+  .menu-item-active {
+    @apply menu-item bg-slate-800 text-white;
+  }
+
+  .menu-item-inactive {
+    @apply menu-item text-gray-300 hover:bg-gray-800 hover:text-gray-100;
+  }
+
+  /* Menu Item Icon */
+  .menu-item-icon-size {
+    @apply flex items-center justify-center flex-shrink-0;
+  }
+
+  .menu-item-icon-active {
+    @apply menu-item-icon-size text-white;
+  }
+
+  .menu-item-icon-inactive {
+    @apply menu-item-icon-size text-gray-400 group-hover:text-gray-200;
+  }
+
+  /* Menu Item Text */
+  .menu-item-text {
+    @apply flex-1 truncate font-medium text-base text-left;
+  }
+
+  /* Dropdown Menu Items */
+  .menu-dropdown-item {
+    @apply flex items-center w-full px-3 py-2 rounded-md transition-all duration-200 text-sm;
+  }
+
+  .menu-dropdown-item-active {
+    @apply menu-dropdown-item bg-blue-600 text-white font-medium;
+  }
+
+  .menu-dropdown-item-inactive {
+    @apply menu-dropdown-item text-gray-300 hover:bg-gray-800 hover:text-gray-100;
+  }
+
+  /* Dropdown Badge */
+  .menu-dropdown-badge {
+    @apply px-2 py-1 text-xs font-semibold rounded-full;
+  }
+
+  .menu-dropdown-badge-active {
+    @apply menu-dropdown-badge bg-blue-400 text-white;
+  }
+
+  .menu-dropdown-badge-inactive {
+    @apply menu-dropdown-badge bg-gray-700 text-gray-300;
   }
 }
