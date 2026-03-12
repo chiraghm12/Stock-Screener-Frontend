@@ -21,9 +21,14 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
         return volume.toLocaleString();
     };
 
+    const handleMiniChartClick = () => {
+        if (!linkUrl) return;
+        window.open(linkUrl, '_blank', 'noopener,noreferrer');
+    };
+
     return (
         <div
-            className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-xl p-5 border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-1 cursor-pointer overflow-hidden"
+            className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-xl p-5 border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-1 overflow-hidden"
         >
             <div
                 className={`absolute inset-0 bg-gradient-to-br ${patternType === 'hammer'
@@ -85,7 +90,17 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
                 </div>
 
                 <div className="mb-4">
-                    <MiniChart change={stock.stock_price_details.percentage_change} />
+                    <MiniChart
+                        change={stock.stock_price_details.percentage_change}
+                        className={linkUrl ? 'cursor-pointer' : ''}
+                        onClick={handleMiniChartClick}
+                        role={linkUrl ? 'link' : undefined}
+                        tabIndex={linkUrl ? 0 : undefined}
+                        onKeyDown={(e) => {
+                            if (!linkUrl) return;
+                            if (e.key === 'Enter' || e.key === ' ') handleMiniChartClick();
+                        }}
+                    />
                 </div>
 
                 <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">

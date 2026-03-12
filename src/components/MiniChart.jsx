@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const MiniChart = ({ change }) => {
+export const MiniChart = ({ change, className = '', ...props }) => {
   const isPositive = change >= 0;
 
   return (
-    <div className="h-12 flex items-end gap-0.5 opacity-60">
+    <div className={`h-12 flex items-end gap-0.5 opacity-60 ${className}`} {...props}>
       {[...Array(7)].map((_, i) => {
         const heights = isPositive
           ? [40, 50, 45, 60, 55, 70, 75]
