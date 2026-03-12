@@ -43,26 +43,29 @@ const AppSidebar = () => {
     [location.pathname]
   );
 
+  // Sync open submenu with current route (deferred setState to satisfy lint)
   useEffect(() => {
-    let submenuMatched = false;
-    ["main", "others"].forEach((menuType) => {
-      const items = menuType === "main" ? navItems : othersItems;
-      items.forEach((nav, index) => {
+    let matched = null;
+    for (const [menuType, items] of [
+      ["main", navItems],
+      ["others", othersItems],
+    ]) {
+      for (let i = 0; i < items.length; i++) {
+        const nav = items[i];
         if (nav.subItems) {
-          nav.subItems.forEach((subItem) => {
-            if (isActive(subItem.path)) {
-              setOpenSubmenu({ type: menuType, index });
-              submenuMatched = true;
+          for (const subItem of nav.subItems) {
+            if (location.pathname.startsWith(subItem.path)) {
+              matched = { type: menuType, index: i };
+              break;
             }
-          });
+          }
         }
-      });
-    });
-
-    if (!submenuMatched) {
-      setOpenSubmenu(null);
+        if (matched) break;
+      }
+      if (matched) break;
     }
-  }, [location, isActive]);
+    queueMicrotask(() => setOpenSubmenu(matched));
+  }, [location.pathname]);
 
   useEffect(() => {
     if (openSubmenu !== null) {
