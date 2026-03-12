@@ -47,15 +47,19 @@ export const PatternSection = ({ title, stocks, patternType, icon }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {stocks.map((stock, index) => (
                     <div
-                        key={stock.symbol}
+                        key={stock.stock?.symbol ?? index}
                         className="animate-in fade-in-50 slide-in-from-bottom-4"
                         style={{
                             animationDelay: `${index * 50}ms`,
                             animationFillMode: 'backwards',
                         }}
                     >
-                        <StockCard stock={stock} patternType={patternType} linkUrl={`https://www.tradingview.com/chart/?symbol=NSE:${stock.symbol}`}
-                            linkIcon={ExternalLink} />
+                        <StockCard
+                            stock={stock}
+                            patternType={patternType}
+                            linkUrl={stock.stock?.chart_link}
+                            linkIcon={ExternalLink}
+                        />
                     </div>
                 ))}
             </div>
