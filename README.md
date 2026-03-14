@@ -102,3 +102,6 @@ The frontend communicates with several key endpoints provided by the Django back
 
 *   **Themes:** The app features a dark-mode first design natively built with Tailwind CSS. Colors correspond to trading sentiment (Emerald for bullish, Red for bearish, Blue for neutral).
 *   **Patterns:** More patterns can be added by implementing the logic in the backend `utils.py` and creating corresponding views/models. 
+
+
+## acknowledgement
