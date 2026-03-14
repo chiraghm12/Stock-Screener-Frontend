@@ -2,9 +2,9 @@
 
 A comprehensive full-stack application for scanning the Indian stock market (NIFTY 500) for common candlestick patterns and delivery percentage anomalies.
 
-![App Screenshot](./Frontend/Candlestick%20Scanner/public/screen1.png)
+![App Screenshot](./public/screen1.png)
 
-![App Screenshot](./Frontend/Candlestick%20Scanner/public/screen2.png)
+![App Screenshot](./public/screen2.png)
 
 ## Features
 
@@ -102,6 +102,3 @@ The frontend communicates with several key endpoints provided by the Django back
 
 *   **Themes:** The app features a dark-mode first design natively built with Tailwind CSS. Colors correspond to trading sentiment (Emerald for bullish, Red for bearish, Blue for neutral).
 *   **Patterns:** More patterns can be added by implementing the logic in the backend `utils.py` and creating corresponding views/models. 
-
-
-## acknowledgement
