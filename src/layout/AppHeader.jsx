@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { useSidebar } from "../context/SidebarContext";
 import { apiClient } from "../api/axios";
+import toast from "react-hot-toast";
 // import { ThemeToggleButton } from "../components/common/ThemeToggleButton";
 // import UserDropdown from "../components/header/UserDropdown";
 import {
@@ -34,10 +35,12 @@ const AppHeader = () => {
     const handleRefresh = async () => {
         try {
             setIsRefreshing(true);
-            await apiClient.post("/create-stock-prices/");
+            const response = await apiClient.post("/create-stock-prices/");
             console.log("refresh api called successfully");
+            toast.success("Data refreshed successfully!");
         } catch (error) {
             console.error("Failed to refresh data:", error);
+            toast.error("Failed to refresh data. Please try again.");
         } finally {
             setIsRefreshing(false);
         }

@@ -11,6 +11,7 @@ import ProGapPositive from './pages/Candlestick/ProGapPositive';
 import ProGapNegative from './pages/Candlestick/ProGapNegative';
 import Delivery from './pages/Delivery/Delivery';
 import AppLayout from './layout/AppLayout';
+import { Toaster } from 'react-hot-toast';
 
 // const App = () => {
 //   const [data, setData] = useState(null);
@@ -91,24 +92,27 @@ import AppLayout from './layout/AppLayout';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<Navigate to="/candlestick-patterns" replace />} />
-          <Route path="/candlestick-patterns" element={<Navigate to="/hammer" replace />} />
-          <Route path="/hammer" element={<Hammer />} />
-          <Route path="/inverted-hammer" element={<InvertedHammer />} />
-          <Route path="/bullish-engulfing" element={<BullishEngulfing />} />
-          <Route path="/bearish-engulfing" element={<BearishEngulfing />} />
-          <Route path="/doji" element={<Doji />} />
-          <Route path="/bullish-kicker" element={<BullishKicker />} />
-          <Route path="/bearish-kicker" element={<BearishKicker />} />
-          <Route path="/pro-gap-positive" element={<ProGapPositive />} />
-          <Route path="/pro-gap-negative" element={<ProGapNegative />} />
-          <Route path="/delivery" element={<Delivery />} />
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <Toaster position="top-center" />
+      <Router>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Navigate to="/candlestick-patterns" replace />} />
+            <Route path="/candlestick-patterns" element={<Navigate to="/hammer" replace />} />
+            <Route path="/hammer" element={<Hammer />} />
+            <Route path="/inverted-hammer" element={<InvertedHammer />} />
+            <Route path="/bullish-engulfing" element={<BullishEngulfing />} />
+            <Route path="/bearish-engulfing" element={<BearishEngulfing />} />
+            <Route path="/doji" element={<Doji />} />
+            <Route path="/bullish-kicker" element={<BullishKicker />} />
+            <Route path="/bearish-kicker" element={<BearishKicker />} />
+            <Route path="/pro-gap-positive" element={<ProGapPositive />} />
+            <Route path="/pro-gap-negative" element={<ProGapNegative />} />
+            <Route path="/delivery" element={<Delivery />} />
+          </Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

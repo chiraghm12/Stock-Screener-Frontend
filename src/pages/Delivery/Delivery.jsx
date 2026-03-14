@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { LoadingSkeleton } from '../../components/LoadingSkeleton';
 import { apiClient } from '../../api/axios';
-import { Package, TrendingUp, Search } from 'lucide-react';
+import { Package, TrendingUp, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Delivery = () => {
     const [data, setData] = useState([]);
@@ -9,6 +9,10 @@ const Delivery = () => {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [onlyGreater, setOnlyGreater] = useState(false);
+    
+    // Pagination state
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 20;
 
     const filters = [
         { label: 'Nifty 50', value: 'nifty_50' },
@@ -40,6 +44,11 @@ const Delivery = () => {
         fetchDeliveryData();
     }, [onlyGreater]);
 
+    // Reset to page 1 when filters change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [selectedFilters, searchQuery, onlyGreater]);
+
     const toggleFilter = (filterValue) => {
         setSelectedFilters((prev) => {
             if (prev.includes(filterValue)) {
@@ -62,6 +71,11 @@ const Delivery = () => {
             return matchesFilter && matchesSearch;
         });
     }, [data, selectedFilters, searchQuery]);
+
+    // Calculate pagination values
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const paginatedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
@@ -151,7 +165,7 @@ const Delivery = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-800/50 text-sm text-slate-300">
-                                        {filteredData.map((stock) => (
+                                        {paginatedData.map((stock) => (
                                             <tr 
                                                 key={stock.stock_id} 
                                                 className="hover:bg-slate-800/40 transition-colors group"
@@ -188,6 +202,36 @@ const Delivery = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            
+                            {/* Pagination Controls */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-between px-6 py-4 border-t border-slate-800/50 bg-slate-800/20">
+                                    <div className="text-sm text-slate-400">
+                                        Showing <span className="font-semibold text-slate-300">{startIndex + 1}</span> to <span className="font-semibold text-slate-300">{Math.min(startIndex + itemsPerPage, filteredData.length)}</span> of <span className="font-semibold text-slate-300">{filteredData.length}</span> results
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <button
+                                            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                                            disabled={currentPage === 1}
+                                            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-slate-400 transition-colors"
+                                        >
+                                            <ChevronLeft className="w-5 h-5" />
+                                        </button>
+                                        <div className="flex items-center px-3 py-1 bg-slate-800 rounded-md border border-slate-700">
+                                            <span className="text-sm font-medium text-slate-300">
+                                                Page {currentPage} of {totalPages}
+                                            </span>
+                                        </div>
+                                        <button
+                                            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                                            disabled={currentPage === totalPages}
+                                            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-slate-400 transition-colors"
+                                        >
+                                            <ChevronRight className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
