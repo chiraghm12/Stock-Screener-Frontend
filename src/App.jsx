@@ -4,6 +4,11 @@ import Hammer from './pages/Candlestick/Hammer';
 import InvertedHammer from './pages/Candlestick/InvertedHammer';
 import BullishEngulfing from './pages/Candlestick/BullishEngulfing';
 import BearishEngulfing from './pages/Candlestick/BearishEngulfing';
+import Doji from './pages/Candlestick/Doji';
+import BullishKicker from './pages/Candlestick/BullishKicker';
+import BearishKicker from './pages/Candlestick/BearishKicker';
+import ProGapPositive from './pages/Candlestick/ProGapPositive';
+import ProGapNegative from './pages/Candlestick/ProGapNegative';
 import Delivery from './pages/Delivery/Delivery';
 import AppLayout from './layout/AppLayout';
 
@@ -95,6 +100,11 @@ function App() {
           <Route path="/inverted-hammer" element={<InvertedHammer />} />
           <Route path="/bullish-engulfing" element={<BullishEngulfing />} />
           <Route path="/bearish-engulfing" element={<BearishEngulfing />} />
+          <Route path="/doji" element={<Doji />} />
+          <Route path="/bullish-kicker" element={<BullishKicker />} />
+          <Route path="/bearish-kicker" element={<BearishKicker />} />
+          <Route path="/pro-gap-positive" element={<ProGapPositive />} />
+          <Route path="/pro-gap-negative" element={<ProGapNegative />} />
           <Route path="/delivery" element={<Delivery />} />
         </Route>
       </Routes>

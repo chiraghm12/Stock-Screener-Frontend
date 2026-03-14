@@ -32,8 +32,10 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
         >
             <div
                 className={`absolute inset-0 bg-gradient-to-br ${
-                    ['hammer', 'bullish_engulfing'].includes(patternType)
+                    ['hammer', 'bullish_engulfing', 'bullish_kicker', 'pro_gap_positive'].includes(patternType)
                     ? 'from-emerald-500/5 to-transparent'
+                    : patternType === 'doji'
+                    ? 'from-blue-500/5 to-transparent'
                     : 'from-red-500/5 to-transparent'
                     } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
             />
@@ -46,12 +48,14 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
                                 {stock.stock.symbol}
                             </h3>
                             <span
-                                className={`px-2 py-0.5 text-xs font-semibold rounded-full ${['hammer', 'bullish_engulfing'].includes(patternType)
+                                className={`px-2 py-0.5 text-xs font-semibold rounded-full ${['hammer', 'bullish_engulfing', 'bullish_kicker', 'pro_gap_positive'].includes(patternType)
                                     ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                                    : patternType === 'doji'
+                                    ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
                                     : 'bg-red-500/20 text-red-300 border border-red-500/30'
                                     }`}
                             >
-                                {patternType === 'hammer' ? 'Hammer' : patternType === 'bullish_engulfing' ? 'Bullish Engulfing' : patternType === 'bearish_engulfing' ? 'Bearish Engulfing' : 'Inv. Hammer'}
+                                {patternType === 'hammer' ? 'Hammer' : patternType === 'inverted_hammer' ? 'Inv. Hammer' : patternType === 'bullish_engulfing' ? 'Bullish Engulfing' : patternType === 'bearish_engulfing' ? 'Bearish Engulfing' : patternType === 'doji' ? 'Doji' : patternType === 'bullish_kicker' ? 'Bullish Kicker' : patternType === 'bearish_kicker' ? 'Bearish Kicker' : patternType === 'pro_gap_positive' ? 'Pro Gap Positive' : 'Pro Gap Negative'}
                             </span>
                             {linkUrl && LinkIcon && (
                                 <a

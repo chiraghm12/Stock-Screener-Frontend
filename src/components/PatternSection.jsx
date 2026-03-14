@@ -33,7 +33,7 @@ export const PatternSection = ({ title, stocks, patternType, icon }) => {
                         <h2 className="text-2xl font-bold text-slate-100">{title}</h2>
                         <p className="text-sm text-slate-400">
                             <span
-                                className={`font-semibold ${['hammer', 'bullish_engulfing'].includes(patternType) ? 'text-emerald-400' : 'text-red-400'
+                                className={`font-semibold ${['hammer', 'bullish_engulfing', 'bullish_kicker', 'pro_gap_positive'].includes(patternType) ? 'text-emerald-400' : patternType === 'doji' ? 'text-blue-400' : 'text-red-400'
                                     }`}
                             >
                                 {stocks.length}
