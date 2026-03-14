@@ -59,12 +59,12 @@ const AppHeader = () => {
     }, []);
 
     return (
-        <header className="sticky top-0 flex w-full bg-slate-950 border-b border-gray-800 z-999 lg:border-b">
+        <header className="sticky top-0 flex w-full bg-slate-950 border-b border-gray-800 z-50 lg:border-b">
             <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
                 <div className="flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4">
                     {/* Toggle Sidebar Button */}
                     <button
-                        className="items-center justify-center w-10 h-10 text-gray-400 border-gray-800 rounded-lg z-99999 lg:flex lg:h-11 lg:w-11 lg:border hover:bg-slate-800/50 hover:text-gray-100"
+                        className="items-center justify-center w-10 h-10 text-gray-400 border-gray-800 rounded-lg z-50 lg:flex lg:h-11 lg:w-11 lg:border hover:bg-slate-800/50 hover:text-gray-100"
                         onClick={handleToggle}
                         aria-label="Toggle Sidebar"
                     >
@@ -98,7 +98,7 @@ const AppHeader = () => {
                     {/* Toggle Application Menu Button */}
                     <button
                         onClick={toggleApplicationMenu}
-                        className="flex items-center justify-center w-10 h-10 text-gray-400 rounded-lg z-99999 hover:bg-slate-800/50 hover:text-gray-100 lg:hidden"
+                        className="flex items-center justify-center w-10 h-10 text-gray-400 rounded-lg z-50 hover:bg-slate-800/50 hover:text-gray-100 lg:hidden"
                     >
                         <HiOutlineDotsHorizontal className="w-6 h-6" />
                     </button>

@@ -31,9 +31,10 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
             className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-xl p-5 border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/50 hover:-translate-y-1 overflow-hidden"
         >
             <div
-                className={`absolute inset-0 bg-gradient-to-br ${patternType === 'hammer'
+                className={`absolute inset-0 bg-gradient-to-br ${
+                    ['hammer', 'bullish_engulfing'].includes(patternType)
                     ? 'from-emerald-500/5 to-transparent'
-                    : 'from-blue-500/5 to-transparent'
+                    : 'from-red-500/5 to-transparent'
                     } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
             />
 
@@ -45,12 +46,12 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
                                 {stock.stock.symbol}
                             </h3>
                             <span
-                                className={`px-2 py-0.5 text-xs font-semibold rounded-full ${patternType === 'hammer'
+                                className={`px-2 py-0.5 text-xs font-semibold rounded-full ${['hammer', 'bullish_engulfing'].includes(patternType)
                                     ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                                    : 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                                    : 'bg-red-500/20 text-red-300 border border-red-500/30'
                                     }`}
                             >
-                                {patternType === 'hammer' ? 'Hammer' : 'Inv. Hammer'}
+                                {patternType === 'hammer' ? 'Hammer' : patternType === 'bullish_engulfing' ? 'Bullish Engulfing' : patternType === 'bearish_engulfing' ? 'Bearish Engulfing' : 'Inv. Hammer'}
                             </span>
                             {linkUrl && LinkIcon && (
                                 <a
@@ -72,10 +73,10 @@ export const StockCard = ({ stock, patternType, linkUrl, linkIcon: LinkIcon }) =
                         {isPositive ? (
                             <TrendingUp className="w-5 h-5 text-emerald-400" />
                         ) : (
-                            <TrendingDown className="w-5 h-5 text-rose-400" />
+                            <TrendingDown className="w-5 h-5 text-red-400" />
                         )}
                         <span
-                            className={`text-xl font-bold ${isPositive ? 'text-emerald-400' : 'text-rose-400'
+                            className={`text-xl font-bold ${isPositive ? 'text-emerald-400' : 'text-red-400'
                                 }`}
                         >
                             {isPositive ? '+' : ''}
