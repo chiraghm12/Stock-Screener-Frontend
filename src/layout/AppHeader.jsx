@@ -34,8 +34,8 @@ const AppHeader = () => {
     const handleRefresh = async () => {
         try {
             setIsRefreshing(true);
-            // change "/refresh-data" to your actual backend endpoint
             await apiClient.post("/create-stock-prices/");
+            console.log("refresh api called successfully");
         } catch (error) {
             console.error("Failed to refresh data:", error);
         } finally {

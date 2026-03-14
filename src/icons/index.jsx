@@ -19,6 +19,8 @@ import {
   MdMailOutline,
   MdOutlineWbSunny,
   MdCandlestickChart,
+  MdError,
+  MdCheckCircle
 } from "react-icons/md";
 import {
   FaRegFolder,
@@ -119,6 +121,8 @@ export {
   MdOutlineLock,
   MdMailOutline,
   MdCandlestickChart,
+  MdCheckCircle,
+  MdError,
   FaRegFolder,
   FaRegCopy,
   FaAngleLeft,
