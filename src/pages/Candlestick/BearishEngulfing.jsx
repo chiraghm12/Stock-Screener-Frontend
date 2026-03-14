@@ -3,26 +3,26 @@ import { LoadingSkeleton } from '../../components/LoadingSkeleton';
 import { PatternSection } from '../../components/PatternSection';
 import { apiClient } from '../../api/axios';
 
-const Hammer = () => {
+const BearishEngulfing = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        const fetchHammerData = async () => {
+        const fetchBearishEngulfingData = async () => {
             try {
                 setIsLoading(true);
-                const response = await apiClient.get('/patterns/hammer/');
+                const response = await apiClient.get('/patterns/bearish-engulfing/');
                 console.log("responseData: ", response);
                 setData(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
-                console.error('Failed to fetch hammer data:', error);
+                console.error('Failed to fetch bearish engulfing data:', error);
                 setData([]);
             } finally {
                 setIsLoading(false);
             }
         };
 
-        fetchHammerData();
+        fetchBearishEngulfingData();
     }, []);
     return (
         <>
@@ -33,11 +33,11 @@ const Hammer = () => {
                     ) : data && data.length ? (
                         <div className="space-y-12">
                             <PatternSection
-                                title="Hammer Pattern"
+                                title="Bearish Engulfing Pattern"
                                 stocks={data}
-                                patternType="hammer"
+                                patternType="bearish_engulfing"
                                 icon={
-                                    <div className="p-3 flex items-center justify-center bg-emerald-500/20 rounded-xl border border-emerald-500/30">
+                                    <div className="p-3 flex items-center justify-center bg-red-500/20 rounded-xl border border-red-500/30">
                                         <svg
                                             viewBox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ const Hammer = () => {
                                                     fill="#10B981"
                                                 />
                                                 <path
-                                                    d="M18.5 8.5H18.25V2C18.25 1.59 17.91 1.25 17.5 1.25C17.09 1.25 16.75 1.59 16.75 2V8.5H16.5C14.91 8.5 14 9.41 14 11V17C14 18.59 14.91 19.5 16.5 19.5H16.75V22C16.75 22.41 17.09 22.75 17.5 22.75C17.91 22.75 18.25 22.41 18.25 22V19.5H18.5C20.09 19.5 21 18.59 21 17V11C21 9.41 20.09 8.5 18.5 8.5Z"
+                                                    d="M18.5 2.5H18.25V2C18.25 1.59 17.91 1.25 17.5 1.25C17.09 1.25 16.75 1.59 16.75 2V2.5H16.5C14.91 2.5 14 3.41 14 5V21C14 22.59 14.91 23.5 16.5 23.5H16.75V22C16.75 22.41 17.09 22.75 17.5 22.75C17.91 22.75 18.25 22.41 18.25 22V23.5H18.5C20.09 23.5 21 22.59 21 21V5C21 3.41 20.09 2.5 18.5 2.5Z"
                                                     fill="#EF4444"
                                                 />
                                             </g>
@@ -71,4 +71,4 @@ const Hammer = () => {
     );
 };
 
-export default Hammer;
+export default BearishEngulfing;

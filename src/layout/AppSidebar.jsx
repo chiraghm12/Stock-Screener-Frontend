@@ -18,6 +18,8 @@ const navItems = [
     subItems: [
       { name: "Hammer", path: "/hammer", pro: false },
       { name: "Inverted Hammer", path: "/inverted-hammer", pro: false },
+      { name: "Bullish Engulfing", path: "/bullish-engulfing", pro: false },
+      { name: "Bearish Engulfing", path: "/bearish-engulfing", pro: false },
     ],
     path: "/candlestick-patterns",
   },

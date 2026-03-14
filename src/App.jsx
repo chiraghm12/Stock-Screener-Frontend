@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Hammer from './pages/Candlestick/Hammer';
 import InvertedHammer from './pages/Candlestick/InvertedHammer';
+import BullishEngulfing from './pages/Candlestick/BullishEngulfing';
+import BearishEngulfing from './pages/Candlestick/BearishEngulfing';
 import Delivery from './pages/Delivery/Delivery';
 import AppLayout from './layout/AppLayout';
 
@@ -91,6 +93,8 @@ function App() {
           <Route path="/candlestick-patterns" element={<Navigate to="/hammer" replace />} />
           <Route path="/hammer" element={<Hammer />} />
           <Route path="/inverted-hammer" element={<InvertedHammer />} />
+          <Route path="/bullish-engulfing" element={<BullishEngulfing />} />
+          <Route path="/bearish-engulfing" element={<BearishEngulfing />} />
           <Route path="/delivery" element={<Delivery />} />
         </Route>
       </Routes>
